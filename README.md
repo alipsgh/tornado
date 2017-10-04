@@ -15,3 +15,7 @@ Once you have all the packages installed, you can run the framework. Three sampl
 * **_github_prequential_multi_test.py_** - This file lets you run multiple adaptive algorithms together against a data stream. While algorithms are learning from instances of a data stream, the framework tells you which adaptive algorithm is optimal by considering _classification_, _adaptation_, and _resource consumption_ measures.
 * **_github_generate_stream.py_** - The file helps you use the Tornado framework for generating synthetic data streams containing concept drifts. You find a list of stream generators in `tornado/streams/generators/`.
 
+<br/>
+<br/>
+
+<sub>Ali Pesaranghader © 2017</sub>
