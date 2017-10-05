@@ -18,4 +18,4 @@ Once you have all the packages installed, you can run the framework. Three sampl
 <br/>
 <br/>
 
-<sub>Ali Pesaranghader © 2017</sub>
+<sub>Ali Pesaranghader © 2017<br/>Under MIT License</sub>
