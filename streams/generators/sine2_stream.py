@@ -101,7 +101,7 @@ class SINE2:
 
     def write_to_arff(self, output_path):
         arff_writer = open(output_path, "w")
-        arff_writer.write("@relation SINE1" + "\n")
+        arff_writer.write("@relation SINE2" + "\n")
         arff_writer.write("@attribute x real" + "\n" +
                           "@attribute y real" + "\n" +
                           "@attribute class {p,n}" + "\n\n")
