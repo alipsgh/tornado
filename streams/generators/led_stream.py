@@ -139,7 +139,7 @@ class LEDConceptDrift:
 
     def write_to_arff(self, output_path):
         arff_writer = open(output_path, "w")
-        arff_writer.write("@relation SINE1" + "\n\n")
+        arff_writer.write("@relation LED" + "\n\n")
         attributes_str = ""
         for a in range(0, 7 + self.__NUM_IRR_ATTR):
             attributes_str += "@attribute a" + str(a) + " {0,1}" + "\n"
