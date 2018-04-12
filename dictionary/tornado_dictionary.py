@@ -29,6 +29,9 @@ class TornadoDic:
     K_NN = "K NEAREST NEIGHBOURS"
     KNN = "KNN"
 
+    MDDM_A = "MDDM.A"
+    MDDM_G = "MDDM.G"
+    MDDM_E = "MDDM.E"
     FHDDMS = "FHDDMS"
     FHDDMS_add = "FHDDMS.add"
     FHDDM = "FHDDM"
@@ -39,6 +42,7 @@ class TornadoDic:
     ADWIN = "ADWIN"
     DDM = "DDM"
     EDDM = "EDDM"
+    RDDM = "RDDM"
     PH = "PageHinkley"
     CUSUM = "CUSUM"
     NO_DETECTION = "NO_DETECTION"
