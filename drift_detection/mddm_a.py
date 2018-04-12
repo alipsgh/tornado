@@ -6,7 +6,7 @@ E-mail: apesaran -at- uottawa -dot- ca / alipsgh -at- gmail -dot- com
 ---
 *** The McDiarmid Drift Detection Method - Arithmetic Scheme (MDDM_A) Implementation ***
 Paper: Pesaranghader, Ali, et al. "McDiarmid Drift Detection Method for Evolving Data Streams."
-Published in: International Joint Conference on Neural Network
+Published in: International Joint Conference on Neural Network (IJCNN 2018)
 URL: https://arxiv.org/abs/1710.02030
 """
 
