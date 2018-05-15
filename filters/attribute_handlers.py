@@ -66,8 +66,8 @@ class Discretizer:
         bins = []
         w = (attribute.MAXIMUM_VALUE - attribute.MINIMUM_VALUE) / num_of_bins
         for k in range(0, num_of_bins):
-            lower_bound = round(attribute.MINIMUM_VALUE + (k * w), 3)
-            upper_bound = round(attribute.MINIMUM_VALUE + ((k + 1) * w), 3)
+            lower_bound = round(attribute.MINIMUM_VALUE + (k * w), 10)
+            upper_bound = round(attribute.MINIMUM_VALUE + ((k + 1) * w), 10)
             bins.append(str(lower_bound) + '..' + str(upper_bound))
         attribute.TYPE = TornadoDic.NOMINAL_ATTRIBUTE
         attribute.set_possible_values(bins)
