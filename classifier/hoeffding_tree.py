@@ -81,7 +81,7 @@ class HoeffdingNode:
     def initialize_classes(self, classes):
         for c in classes:
             self.CLASSES_DISTRIBUTIONS[c] = 0
-            self.CLASSES_PROB_DISTRIBUTIONS[c] = 0
+            self.CLASSES_PROB_DISTRIBUTIONS[c] = 0.0
 
     def initialize_attributes(self, classes):
         for attribute in self.CANDIDATE_ATTRIBUTES:
@@ -92,7 +92,7 @@ class HoeffdingNode:
                 self.CANDIDATE_ATTRIBUTES_VALUES_PROB_DISTRIBUTIONS[attribute.NAME][value] = OrderedDict()
                 for c in classes:
                     self.CANDIDATE_ATTRIBUTES_VALUES_DISTRIBUTIONS[attribute.NAME][value][c] = 0
-                    self.CANDIDATE_ATTRIBUTES_VALUES_PROB_DISTRIBUTIONS[attribute.NAME][value][c] = 0
+                    self.CANDIDATE_ATTRIBUTES_VALUES_PROB_DISTRIBUTIONS[attribute.NAME][value][c] = 0.0
 
     def set_attribute_name(self, name):
         """This function is called when an attribute has been considered as an appropriate choice of splitting!"""
@@ -157,22 +157,30 @@ class HoeffdingTree(SuperClassifier):
 
     def train(self, instance):
 
-        x = instance[0:len(instance) - 1]
-        y = instance[len(instance) - 1]
+        x, y = instance[:-1], instance[-1]
+
         node = self.__trace(x)
+
         node.NUMBER_OF_EXAMPLES_SEEN += 1
         node.CLASSES_DISTRIBUTIONS[y] += 1
-        node.CLASSES_PROB_DISTRIBUTIONS[y] = node.CLASSES_DISTRIBUTIONS[y] / node.NUMBER_OF_EXAMPLES_SEEN
 
-        for i in range(0, len(x)):
-            attribute = self.ATTRIBUTES[i]
-            value = x[i]
-            if node.CANDIDATE_ATTRIBUTES.__contains__(attribute):
-                node.CANDIDATE_ATTRIBUTES_VALUES_DISTRIBUTIONS[attribute.NAME][value][y] += 1
-                for c, c_prob in node.CLASSES_DISTRIBUTIONS.items():
-                    d = node.CANDIDATE_ATTRIBUTES_VALUES_DISTRIBUTIONS[attribute.NAME][value][c]
-                    k = len(node.CANDIDATE_ATTRIBUTES_VALUES_DISTRIBUTIONS)
-                    node.CANDIDATE_ATTRIBUTES_VALUES_PROB_DISTRIBUTIONS[attribute.NAME][value][c] = (d + 1) / (k + c_prob)
+        if self.__PREDICTION_MODE == TornadoDic.NB:
+
+            for c in self.CLASSES:
+                node.CLASSES_PROB_DISTRIBUTIONS[c] = node.CLASSES_DISTRIBUTIONS[c] / node.NUMBER_OF_EXAMPLES_SEEN
+
+            for i in range(0, len(x)):
+                attribute, value = self.ATTRIBUTES[i], x[i]
+                if node.CANDIDATE_ATTRIBUTES.__contains__(attribute):
+                    node.CANDIDATE_ATTRIBUTES_VALUES_DISTRIBUTIONS[attribute.NAME][value][y] += 1
+
+            for c, c_prob in node.CLASSES_DISTRIBUTIONS.items():
+                for attr in node.CANDIDATE_ATTRIBUTES:
+                    attr_name = attr.NAME
+                    k = len(node.CANDIDATE_ATTRIBUTES_VALUES_DISTRIBUTIONS[attr_name])
+                    for value in attr.POSSIBLE_VALUES:
+                        d = node.CANDIDATE_ATTRIBUTES_VALUES_DISTRIBUTIONS[attr_name][value][c]
+                        node.CANDIDATE_ATTRIBUTES_VALUES_PROB_DISTRIBUTIONS[attr_name][value][c] = (d + 1) / (k + c_prob)
 
         most_populated_class = max(node.CLASSES_DISTRIBUTIONS.items(), key=operator.itemgetter(1))
         node.set_class(most_populated_class)
@@ -234,6 +242,39 @@ class HoeffdingTree(SuperClassifier):
         else:
             print("Please train a Hoeffding Tree classifier first.")
             exit()
+
+    def get_prediction_prob(self, X):
+
+        node = self.__trace(X)
+
+        if node.get_class() is None:
+            node = node.PARENT
+
+        prob = []
+        if self.__PREDICTION_MODE == TornadoDic.MC:
+            for c in self.CLASSES:
+                prob.append(node.CLASSES_PROB_DISTRIBUTIONS[c])
+        else:
+            for c in self.CLASSES:
+                pr = node.CLASSES_PROB_DISTRIBUTIONS[c]
+                for attr_index in range(0, len(X)):
+                    if node.CANDIDATE_ATTRIBUTES.__contains__(self.ATTRIBUTES[attr_index]):
+                        attr = self.ATTRIBUTES[attr_index]
+                        value = X[attr_index]
+                        pr *= node.CANDIDATE_ATTRIBUTES_VALUES_PROB_DISTRIBUTIONS[attr.NAME][value][c]
+                prob.append(pr)
+
+            prob_sum = sum(prob)
+            if prob_sum != 0.0:
+                prob = [x / prob_sum for x in prob]
+            else:
+                prob = [0.0 for x in prob]
+
+        pred_prob = {}
+        for i, c in enumerate(self.CLASSES):
+            pred_prob[c] = prob[i]
+
+        return pred_prob
 
     @staticmethod
     def __get_two_attributes_with_highest_scores(attributes_scores):
