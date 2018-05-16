@@ -23,6 +23,10 @@ class ARFFReader:
         data_flag = False
         reader = open(file_path, "r")
         for line in reader:
+            
+            if line.strip() == '':
+                continue
+            
             if line.startswith("@attribute") or line.startswith("@ATTRIBUTE"):
 
                 line = line.strip('\n\r\t')
