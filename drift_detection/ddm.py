@@ -27,7 +27,7 @@ class DDM(SuperDetector):
         super().__init__()
 
         self.MINIMUM_NUM_INSTANCES = min_instance
-        self.NUM_INSTANCES_SEEN = 0
+        self.NUM_INSTANCES_SEEN = 1
 
         self.__P = 1
         self.__S = 0
@@ -35,23 +35,21 @@ class DDM(SuperDetector):
         self.__S_min = sys.maxsize
 
     def run(self, pr):
-        warning_status = False
-        drift_status = False
 
-        self.NUM_INSTANCES_SEEN += 1
+        warning_status, drift_status = False, False
+
+        pr = 1 if pr is False else 0
 
         # 1. UPDATING STATS
-        if pr is False:
-            self.__P += (1 - self.__P) / self.NUM_INSTANCES_SEEN
-        else:
-            self.__P -= self.__P / self.NUM_INSTANCES_SEEN
-
+        self.__P += (pr - self.__P) / self.NUM_INSTANCES_SEEN
         self.__S = math.sqrt(self.__P * (1 - self.__P) / self.NUM_INSTANCES_SEEN)
+
+        self.NUM_INSTANCES_SEEN += 1
 
         if self.NUM_INSTANCES_SEEN < self.MINIMUM_NUM_INSTANCES:
             return False, False
 
-        if self.__P + self.__S < self.__P_min + self.__S_min:
+        if self.__P + self.__S <= self.__P_min + self.__S_min:
             self.__P_min = self.__P
             self.__S_min = self.__S
 
@@ -60,17 +58,17 @@ class DDM(SuperDetector):
         warning_level = self.__P_min + 2 * self.__S_min
         drift_level = self.__P_min + 3 * self.__S_min
 
-        if current_level >= warning_level:
+        if current_level > warning_level:
             warning_status = True
 
-        if current_level >= drift_level:
+        if current_level > drift_level:
             drift_status = True
 
         return warning_status, drift_status
 
     def reset(self):
         super().reset()
-        self.NUM_INSTANCES_SEEN = 0
+        self.NUM_INSTANCES_SEEN = 1
         self.__P = 1
         self.__S = 0
         self.__P_min = sys.maxsize
