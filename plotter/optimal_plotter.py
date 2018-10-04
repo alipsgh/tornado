@@ -11,6 +11,7 @@ import matplotlib.patches as patches
 import pylab
 from matplotlib.legend_handler import HandlerPatch
 
+
 # The LaTeX rendering is disabled since some users may not have LaTeX installed.
 # plt.rc('font', **{'family': 'Computer Modern'})
 # plt.rc('text', usetex=True)
