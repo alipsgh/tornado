@@ -8,7 +8,7 @@ E-mail: apesaran -at- uottawa -dot- ca / alipsgh -at- gmail -dot- com
 import pylab
 from matplotlib import pyplot as plt
 from matplotlib.ticker import FuncFormatter
-from distutils.spawn import find_executable
+
 
 # The LaTeX rendering is disabled since some users may not have LaTeX installed.
 # plt.rc('font', **{'family': 'Computer Modern'})
