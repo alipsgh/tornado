@@ -8,9 +8,11 @@ E-mail: apesaran -at- uottawa -dot- ca / alipsgh -at- gmail -dot- com
 import pylab
 from matplotlib import pyplot as plt
 from matplotlib.ticker import FuncFormatter
+from distutils.spawn import find_executable
 
-plt.rc('font', **{'family': 'Computer Modern'})
-plt.rc('text', usetex=True)
+# The LaTeX rendering is disabled since some users may not have LaTeX installed.
+# plt.rc('font', **{'family': 'Computer Modern'})
+# plt.rc('text', usetex=True)
 
 
 class Plotter:
@@ -29,7 +31,11 @@ class Plotter:
 
         fig = plt.figure()
         ax = fig.add_subplot(111)
-        ax.set_title(r'\textsc{' + project_name.title() + '}', fontsize=14)
+
+        # LaTeX rendering case. You may use the next line if you have LaTeX installed.
+        # ax.set_title(r'\textsc{' + project_name.title() + '}', fontsize=14)
+        ax.set_title(project_name.title(), fontsize=14)
+
         ax.set_xlim(0, 100)
         if y_lim is not None:
             ax.set_ylim(y_lim[0], y_lim[1])
@@ -43,7 +49,9 @@ class Plotter:
         for leg_obj in leg.legendHandles:
             leg_obj.set_linewidth(2.0)
 
-        ax.xaxis.set_major_formatter(FuncFormatter(lambda ix, _: '%1.0f' % ix + '\%'))
+        # LaTeX rendering case. You may use the next line if you have LaTeX installed.
+        # ax.xaxis.set_major_formatter(FuncFormatter(lambda ix, _: '%1.0f' % ix + '\%'))
+        ax.xaxis.set_major_formatter(FuncFormatter(lambda ix, _: '%1.0f' % ix + '%'))
 
         file_path = (dir_path + file_name + "_" + y_title).lower()
 
@@ -69,7 +77,11 @@ class Plotter:
         fig = plt.figure()
 
         ax = fig.add_subplot(111)
-        ax.set_title(r'\textsc{' + project_name.title() + '}', fontsize=14)
+
+        # LaTeX rendering case. You may use the next line if you have LaTeX installed.
+        # ax.set_title(r'\textsc{' + project_name.title() + '}', fontsize=14)
+        ax.set_title(project_name.title(), fontsize=14)
+
         ax.set_xlim(0, 100)
         if y_lim is not None:
             ax.set_ylim(y_lim[0], y_lim[1])
@@ -80,7 +92,9 @@ class Plotter:
         for i in range(0, len(pairs_names)):
             ax.plot(x, y[i], label=pairs_names[i], color=color_set[i], linewidth=1.2, zorder=z_orders[i])
 
-        ax.xaxis.set_major_formatter(FuncFormatter(lambda ix, _: '%1.0f' % ix + '\%'))
+        # LaTeX rendering case. You may use the next line if you have LaTeX installed.
+        # ax.xaxis.set_major_formatter(FuncFormatter(lambda ix, _: '%1.0f' % ix + '\%'))
+        ax.xaxis.set_major_formatter(FuncFormatter(lambda ix, _: '%1.0f' % ix + '%'))
 
         file_path = (dir_path + file_name + "_" + y_title).lower()
 
@@ -115,11 +129,19 @@ class Plotter:
                 y_.append(1)
 
         ax = plt.subplot(111)
-        ax.set_title(r'\textsc{' + project_name.title() + '}' + " vs.\ " + learner_name, fontsize=14, loc='left')
+
+        # LaTeX rendering case. You may use the next line if you have LaTeX installed.
+        # ax.set_title(r'\textsc{' + project_name.title() + '}' + " vs.\ " + learner_name, fontsize=14, loc='left')
+        ax.set_title(project_name.title() + " vs. " + learner_name, fontsize=14, loc='left')
+
         ax.scatter(x, y_, 30, edgecolors=colour, color=colour, label=learner_name)
         ax.set_xlim(0, 100)
         ax.set_ylim(0.95, 1.05)
-        ax.xaxis.set_major_formatter(FuncFormatter(lambda ix, _: '%1.0f' % ix + '\%'))
+
+        # LaTeX rendering case. You may use the next line if you have LaTeX installed.
+        # ax.xaxis.set_major_formatter(FuncFormatter(lambda ix, _: '%1.0f' % ix + '\%'))
+        ax.xaxis.set_major_formatter(FuncFormatter(lambda ix, _: '%1.0f' % ix + '%'))
+
         ax.xaxis.set_tick_params(labelsize=9)
         ax.yaxis.set_visible(False)
 
@@ -146,11 +168,20 @@ class Plotter:
                     y_.append(1)
 
             ax = plt.subplot(num_subplots, 1, i + 1)
-            ax.set_title(r'\textsc{' + project_name.title() + '}' + " vs.\ " + pairs_names[i], fontsize=14, loc='left')
+
+            # LaTeX rendering case. You may use the next line if you have LaTeX installed.
+            # ax.set_title(r'\textsc{' + project_name.title() + '}' + " vs.\ " + pairs_names[i],
+            #             fontsize=14, loc='left')
+            ax.set_title(project_name.title() + " vs. " + pairs_names[i], fontsize=14, loc='left')
+
             ax.scatter(x, y_, 30, edgecolors=color_set[i], color=color_set[i], label=pairs_names[i])
             ax.set_xlim(0, 100)
             ax.set_ylim(0.95, 1.05)
-            ax.xaxis.set_major_formatter(FuncFormatter(lambda ix, _: '%1.0f' % ix + '\%'))
+
+            # LaTeX rendering case. You may use the next line if you have LaTeX installed.
+            # ax.xaxis.set_major_formatter(FuncFormatter(lambda ix, _: '%1.0f' % ix + '\%'))
+            ax.xaxis.set_major_formatter(FuncFormatter(lambda ix, _: '%1.0f' % ix + '%'))
+
             ax.xaxis.set_tick_params(labelsize=9)
             if i < len(pairs_names) - 1:
                 ax.set_xticklabels([])

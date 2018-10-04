@@ -4,14 +4,16 @@ By Ali Pesaranghader
 University of Ottawa, Ontario, Canada
 E-mail: apesaran -at- uottawa -dot- ca / alipsgh -at- gmail -dot- com
 """
+from distutils.spawn import find_executable
 
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import pylab
 from matplotlib.legend_handler import HandlerPatch
 
-plt.rc('font', **{'family': 'Computer Modern'})
-plt.rc('text', usetex=True)
+# The LaTeX rendering is disabled since some users may not have LaTeX installed.
+# plt.rc('font', **{'family': 'Computer Modern'})
+# plt.rc('text', usetex=True)
 
 
 class HandlerCircle(HandlerPatch):
@@ -43,11 +45,15 @@ class OptimalPairPlotter:
         ax = fig.add_subplot(111, aspect='equal')
 
         if print_title is True:
-            plt.title(r'Classification Model Recommendation vs.\ \textsc{' + title.title() + '} Data Stream Over Time'
-                      + '\n' + r'(\textit{from top-left corner to bottom-right corner})', fontsize=8, loc='center')
+            # LaTeX rendering case. You may use the next line if you have LaTeX installed.
+            # plt.title(r'Classification Model Recommendation vs.\ \textsc{' + title.title() + '} Data Stream Over Time'
+            #          + '\n' + r'(\textit{from top-left corner to bottom-right corner})', fontsize=8, loc='center')
+            plt.title('Classification Model Recommendation vs. ' + title.title() + ' Data Stream Over Time'
+                      + '\n' + 'from top-left corner to bottom-right corner', fontsize=8, loc='center')
 
         ax.set_xlabel(r'$\rightarrow$')
         ax.set_ylabel(r'$\downarrow$')
+
         ax.set_xticklabels([])
         ax.set_yticklabels([])
 
