@@ -13,13 +13,17 @@ Although you can use an installer from https://www.python.org/downloads/ to inst
 Once you have all the packages installed, you can run the framework. Three sample codes are prepared to show how you can use the framework. These files are:
 * **_github_prequential_test.py_** - This file lets you evaluate an adaptive algorithm, i.e. a pair of a learner and a drift detector, prequentially. In this example, Naive Bayes is the learner and Fast Hoeffding Drift Detection Method (FHDDM) is the detector. You find lists of incremental learners in `tornado/classifier/` and drift detectors in `tornado/drift_detection/`. The outputs in the created project directory are similar to:
 
-<img src="/tutorial_img/pr/nb_fhddm.100.png" width="50%"/>
-<img src="/tutorial_img/pr/nb_fhddm.100.er.png" width="50%"/>
+<p align="center">
+  <img src="/tutorial_img/pr/nb_fhddm.100.png" width="50%"/><br />
+  <img src="/tutorial_img/pr/nb_fhddm.100.er.png" width="40%"/>
+</p>
 
 * **_github_prequential_multi_test.py_** - This file lets you run multiple adaptive algorithms together against a data stream. While algorithms are learning from instances of a data stream, the framework tells you which adaptive algorithm is optimal by considering _classification_, _adaptation_, and _resource consumption_ measures. The outputs in the created project directory are similar to:
 
-<img src="/tutorial_img/multi/sine1_multi_score.png" width="80%"/>
-<img src="/tutorial_img/multi/sine1_multi_sine1_cr.png" width="80%"/>
+<p align="center">
+  <img src="/tutorial_img/multi/sine1_multi_score.png" width="80%"/><br />
+  <img src="/tutorial_img/multi/sine1_multi_sine1_cr.png" width="75%"/>
+</p>
 
 * **_github_generate_stream.py_** - The file helps you use the Tornado framework for generating synthetic data streams containing concept drifts. You find a list of stream generators in `tornado/streams/generators/`.
 
