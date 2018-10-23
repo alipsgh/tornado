@@ -31,9 +31,10 @@ Once you have all the packages installed, you can run the framework. Three sampl
 
 Please cite the following papers if you plan to use Tornado or any of its components:
 
-1. Pesaranghader, Ali, Herna Viktor, and Eric Paquet. "__Reservoir of Diverse Adaptive Learners and Stacking Fast Hoeffding Drift Detection Methods for Evolving Data Streams__", *Machine Learning Journal*, 2018. <br />
+1. Pesaranghader, Ali. "__A Reservoir of Adaptive Algorithms for Online Learning from Evolving Data Streams__", Ph.D. Dissertation, Université d'Ottawa/University of Ottawa, 2018. <br />
+2. Pesaranghader, Ali, Herna Viktor, and Eric Paquet. "__Reservoir of Diverse Adaptive Learners and Stacking Fast Hoeffding Drift Detection Methods for Evolving Data Streams__", *Machine Learning Journal*, 2018. <br />
 Pre-print available at: https://arxiv.org/abs/1709.02457, DOI: https://doi.org/10.1007/s10994-018-5719-z
-2. Pesaranghader, Ali, Herna L. Viktor, and Eric Paquet. "__A framework for classification in data streams using multi-strategy learning__", *International Conference on Discovery Science*, 2016. <br />
+3. Pesaranghader, Ali, Herna L. Viktor, and Eric Paquet. "__A framework for classification in data streams using multi-strategy learning__", *International Conference on Discovery Science*, 2016. <br />
 Pre-print available at: http://iwera.ir/~ali/papers/ds2016.pdf, DOI: https://doi.org/10.1007/978-3-319-46307-0_22
 
 <br/>
