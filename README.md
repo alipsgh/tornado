@@ -6,7 +6,7 @@ You must have Python 3.5 or above (either 32-bit or 64-bit) on your system to ru
 
 `pip install numpy`
 
-Although you can use an installer from https://www.python.org/downloads/ to install Python on your system, I highly recommend **Anaconda**, one of the Python distributions, since it includes the **numpy**, **scipy**, and **mathplotlib** packages by default. You may download one of the Anaconda's installers from https://www.anaconda.com/download/. Note that, you still need to install the **pympler** package for Anaconda. For that, run the following command in a command prompt or a terminal:
+Although you can use an installer from https://www.python.org/downloads/ to install Python on your system, I highly recommend **Anaconda**, one of the Python distributions, since it includes the **numpy**, **scipy**, and **mathplotlib** packages by default. You may download one of the Anaconda's installers from https://www.anaconda.com/download/. Please note that, you still need to install the **pympler** package for Anaconda. For that, run the following command in a command prompt or a terminal:
 
 `conda install -c conda-forge pympler`
 
