@@ -41,4 +41,4 @@ Pre-print available at: http://iwera.ir/~ali/papers/ds2016.pdf, DOI: https://doi
 <br/>
 <br/>
 
-<sub>Ali Pesaranghader © 2018<br/>Under MIT License</sub>
+<sub>Ali Pesaranghader © 2019<br/>Under MIT License</sub>
