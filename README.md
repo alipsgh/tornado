@@ -29,7 +29,7 @@ Once you have all the packages installed, you may run the framework. Three sampl
 
 ### Citation
 
-Please cite the following papers, or thesis, if you plan to use Tornado or any of its components:
+Please kindly cite the following papers, or thesis, if you plan to use Tornado or any of its components:
 
 1. Pesaranghader, Ali. "__A Reservoir of Adaptive Algorithms for Online Learning from Evolving Data Streams__", Ph.D. Dissertation, Université d'Ottawa/University of Ottawa, 2018. <br />
 DOI: http://dx.doi.org/10.20381/ruor-22444
