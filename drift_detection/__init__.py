@@ -6,5 +6,6 @@ from drift_detection.fhddm import FHDDM
 from drift_detection.fhddms import FHDDMS
 from drift_detection.hddm_a import HDDM_A_test
 from drift_detection.hddm_w import HDDM_W_test
+from drift_detection.rddm import RDDM
 from drift_detection.page_hinkley import PH
 from drift_detection.seq_drift2 import SeqDrift2ChangeDetector
