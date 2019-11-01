@@ -12,7 +12,9 @@ Although you can use an installer from https://www.python.org/downloads/ to inst
 
 `conda install -c conda-forge pympler`
 
-Once you have all the packages installed, you may run the framework. Three sample codes are prepared to show how you can use the framework. These files are:
+Once you have all the packages installed, you may run the framework.
+
+Three sample codes are prepared to show how you can use the framework. Those files are:
 * **_github_prequential_test.py_** - This file lets you evaluate an adaptive algorithm, i.e. a pair of a learner and a drift detector, prequentially. In this example, Naive Bayes is the learner and Fast Hoeffding Drift Detection Method (FHDDM) is the detector. You find lists of incremental learners in `tornado/classifier/` and drift detectors in `tornado/drift_detection/`. The outputs in the created project directory are similar to:
 
 <p align="center">
