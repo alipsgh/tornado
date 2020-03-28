@@ -1,7 +1,8 @@
 # The Tornado Framework
 
 ![Language](https://img.shields.io/badge/language-Python-blue.svg)
-![Stars](https://img.shields.io/github/stars/alipsgh/tornado?color=read)
+![Stars](https://img.shields.io/github/stars/alipsgh/tornado?color=r)
+![Repo Size](https://img.shields.io/github/repo-size/alipsgh/tornado?color=tomato)
 
 Tornado is a framework for data stream mining, written in Python. The framework includes implementations of various incremental/online learning algorithms as well as concept drift detection methods.
 
