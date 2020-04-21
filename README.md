@@ -4,7 +4,7 @@
 ![Stars](https://img.shields.io/github/stars/alipsgh/tornado?color=r)
 ![Repo Size](https://img.shields.io/github/repo-size/alipsgh/tornado?color=tomato)
 
-Tornado is a framework for data stream mining, written in Python. The framework includes implementations of various incremental/online learning algorithms as well as concept drift detection methods.
+Tornado is a framework for data stream mining, implemented in Python. The framework includes various incremental/online learning algorithms as well as concept drift detection methods.
 
 You must have Python 3.5 or above (either 32-bit or 64-bit) on your system to run the framework without any error. Note that the **numpy**, **scipy**, **mathplotlib**, and **pympler** packages are used in the Tornado's implementations. You may use the `pip` command in order to install these packages, for example:
 
