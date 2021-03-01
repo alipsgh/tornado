@@ -5,7 +5,7 @@
 ![Repo Size](https://img.shields.io/github/repo-size/alipsgh/tornado?color=tomato)
 
 <p align="center">
-  <img src="/img/tornado.png" width="50%"/>
+  <img src="/img/tornado.png" width="40%"/>
 </p>
 
 **Tornado** is a framework for data stream mining, implemented in Python. The framework includes various incremental/online learning algorithms as well as concept drift detection methods.
