@@ -12,11 +12,15 @@
 
 You must have Python 3.5 or above (either 32-bit or 64-bit) on your system to run the framework without any error. Note that the **numpy**, **scipy**, **mathplotlib**, and **pympler** packages are used in the Tornado implementations. You may use the `pip` command in order to install these packages, for example:
 
-`pip install numpy`
+```bash
+pip install numpy
+```
 
 Although you can use an installer from https://www.python.org/downloads/ to install Python on your system, I highly recommend **Anaconda**, one of the Python distributions, since it includes the **numpy**, **scipy**, and **mathplotlib** packages by default. You may download one of the Anaconda's installers from https://www.anaconda.com/download/. Please note that, you still need to install the **pympler** package for Anaconda. For that, run the following command in a command prompt or a terminal:
 
-`conda install -c conda-forge pympler`
+```bash
+conda install -c conda-forge pympler
+```
 
 Once you have all the packages installed, you may run the framework.
 
